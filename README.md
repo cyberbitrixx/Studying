@@ -8,5 +8,6 @@ I tried to not cluster the code with comments I added along the way, but their m
 ## Navigation
 
 * [Data In iOS](https://github.com/cyberbitrixx/Studying/tree/c4ac6c9502aecc614b72ce45f755cf7b080cb0c9/Data%20In%20iOS) - 
-* [OOP Principles](https://github.com/cyberbitrixx/Studying/tree/c4ac6c9502aecc614b72ce45f755cf7b080cb0c9/OOP%20Principles) - 
+* [OOP Principles](https://github.com/cyberbitrixx/Studying/tree/c4ac6c9502aecc614b72ce45f755cf7b080cb0c9/OOP%20Principles) -
+* [MATLAB vs Julia](https://github.com/cyberbitrixx/Studying/tree/4d20a875edbae141e481b965f43f066477f83b8e/MATLAB%20vs%20Julia) - a directory that contains all of my notes and code related to studying MATLAB and Julia programming language. Acquired during my data science and database development internship at Washington State University.
 <br><br>

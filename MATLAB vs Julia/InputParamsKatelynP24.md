@@ -28,3 +28,27 @@ S = Dict{String, Any}()
 * In Julia we define InputParamsKatelynP24 as function that takes no parameters ("()").
 * Unlike in MATLAB where return value is being declared initially with function declaration, in Julia we declare return value separately as "S = Dict{String, Any}()".
 * Using Dictionary instead of a Structure like in MATLAB. Julia's dictionaries are more flexible and similar to Python dictionaries.
+<br><br>
+
+MATLAB:
+```matlab
+S.epochs = 900
+```
+Julia:
+```julia
+S["epochs"] = 900
+```
+* Julia uses square bracket notation for dictionary access, while MATLAB uses dot notation for struct fields.
+<br><br>
+
+MATLAB:
+```matlab
+S.Light = ([1:10800]);
+```
+
+Julia:
+```julia
+S["Light"] = 1:10800
+```
+* This creates a range from 1 to 10800 and assigns it to the "Light" key.
+* Julia's ranges are more memory-efficient as they're not immediately expanded into full arrays.

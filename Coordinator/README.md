@@ -154,7 +154,7 @@ This line is the actual notification being sent back to the parent. It's calling
 Has a linear flow, so can only have one child.
 ```swift
 protocol FlowCoordinator: Coordinator {
-var childCoordinator: Coordinator? { get set }
+ var childCoordinator: Coordinator? { get set }
 }
 ```
 
@@ -162,7 +162,7 @@ var childCoordinator: Coordinator? { get set }
 Manages multiple Child Coordinators (for example TabCoordinator managing Settings, DashBoard, UserProfile Coordinators etc.).
 ```swift
 protocol CompositionCoordinator: Coordinator {
-var childCoordinators: [Coordinator] { get set }
+ var childCoordinators: [Coordinator] { get set }
 }
 ```
 
@@ -172,6 +172,12 @@ YAGNI (you're not gonna need it) and other code segregation principles.
 ### Sometimes Navigation Controllers are included within Coordinators. That provides:
 - with basic NavController's navigation functionality
 - allows code reusability
+```swift
+protocol Coordinator: CoordinatorFinishDelegate {
+ ...
+ var navigationController: UINavigationController { get set }
+}
+```
 
 ### Nontheless, it's better to not do that because of the following reasons:
 - better to keep Coordinator independent from UIKit

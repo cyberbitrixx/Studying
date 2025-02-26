@@ -1,10 +1,11 @@
 # 🪢 Coordinator
 
+## UIKit Context
 ## What is Coordinator?
-**<ins>Coordinator</ins>** is a design pattern in iOS apps, that **manages navigation flow** of the app.
+**Coordinator** is a design pattern in iOS apps, that **manages navigation flow** of the app.
 
 ## Why should I use Coordinator?
-Because with raw SwiftUI navigation tools, View Controllers (further VC's) have too much responsibility. That creates unclean cluttered code, loads View Controllers with unnecessary work and can even slow down the app or create barriers for smooth app navigation and user experience.
+Because with raw UIKit (or SwiftUI) navigation tools, View Controllers (further VC's) have too much responsibility. That creates unclean cluttered code, loads View Controllers with unnecessary work and can even slow down the app or create barriers for smooth app navigation and user experience.
  <br><br>
 ### Here's an example 👇🏻
 
@@ -17,12 +18,12 @@ Because with raw SwiftUI navigation tools, View Controllers (further VC's) have 
 - passing data between screens
 - have a lot of unneeded (there) business logic
 
-### View Controllers with Coordinator:
+#### View Controllers with Coordinator:
 - manage the view lifecycle
 - handle it's own UI elements setup and layout
 - after handling user's interaction/response passing information about event to Coordinator, so Coordinator hadnles everything further and makes all the necessary decisions
 
-### By separating the navigation flow logic like this, it's easier to:
+#### By separating the navigation flow logic like this, it's easier to:
 - maintain
 - control
 - test
@@ -30,7 +31,7 @@ Because with raw SwiftUI navigation tools, View Controllers (further VC's) have 
 - scale (you can create subcoordinators that will create whole hierarchies withing the navigation flow, organizing it into the tree structure, that simplifies scaling)
 - promotes modularity
 
-## Summary
+## Summary (SwiftUI)
 Coordinator solves the issues that Navigation Stacks in SwiftUI cause, specifically:
 - hard to manage deep navigation paths
 - difficult to programmatically pop to specific screens
@@ -38,13 +39,15 @@ Coordinator solves the issues that Navigation Stacks in SwiftUI cause, specifica
   
 Coordinator pattern provides us with a powerful tool for managing navigation flow, which means full control over the navigation flow through the app.
 
-# Implementation
+# Implementation (UIKit)
 
 ## Components:
 * CoordinatorFinishDelegate Protocol (defininf a functionality for a child coordinator to communicate to parent coordinator once it's work is done and it can be deleted from parent's coordinator list)
 * Coordinator Protocol (conforms to CoordinatorFinishDelegate and defines start() and finish() methods)
 * Parent Coordinator (conforms to coordinator protocol --> as a result to CoordinatorFinishDelegate as well, has an array of child coordinators, initializes a new child coordinator through start() method, keeps track of the new child coordinator by adding it to array of coordinators, defines childCoordinator as finishDelegate, calls the start() method on it inside it's own start() method, when all the previous setup is finished and the new navigation flow is ready to be started)
 * Child coordinator (conforms to coordinator protocol --> as a result to CoordinatorFinishDelegate as well, has the finish() method in it, which uses CoordinatorFinishDelegate to communicate to the parent coordinator once it's finished it's work and ready to be wrapped up)
+* FlowCoordinator protocol - linear nevagation type Coordinator, that only can have one child
+* CompositionCoordinator protocol - manages multiple children
 
 ### 1. Defining the CoordinatorFinishDelegate protocol
 A piece of functionality to conform our Coordinator to further, to allow the Child Coordinator to communicate to it's Parent Coordinator once it's finished it's work and navigation flow, so that Parent Coordinator can remove the Child Coordinator from it's list (array of child coordinators instances). No any additional knowledge about the Parent Coordinator is required.
@@ -143,3 +146,33 @@ This is a stored property in the AuthCoordinator that holds a reference to whoev
 finishDelegate?.coordinatorDidFinish(self)
 ```
 This line is the actual notification being sent back to the parent. It's calling the coordinatorDidFinish method on the finishDelegate (which is the AppCoordinator) and passing itself (self) as the argument. This tells the parent "Hey, I'm done with my work."
+
+
+## How Coordinators are going to work with Child Coordinators?
+
+### 1. Flow Coordinator
+Has a linear flow, so can only have one child.
+```swift
+protocol FlowCoordinator: Coordinator {
+var childCoordinator: Coordinator? { get set }
+}
+```
+
+### 2. Composition Coordinator
+Manages multiple Child Coordinators (for example TabCoordinator managing Settings, DashBoard, UserProfile Coordinators etc.).
+```swift
+protocol CompositionCoordinator: Coordinator {
+var childCoordinators: [Coordinator] { get set }
+}
+```
+
+## Why not include Child Coordinators array definition to the initial Coordinator (appCoordinator)?
+YAGNI (you're not gonna need it) and other code segregation principles.
+
+### Sometimes Navigation Controllers are included within Coordinators. That provides:
+- with basic NavController's navigation functionality
+- allows code reusability
+
+### Nontheless, it's better to not do that because of the following reasons:
+- better to keep Coordinator independent from UIKit
+- UIKit won't limit us to it's functionality, so we can use other containers (UIViewController, UITabBar, UIWindow etc.)

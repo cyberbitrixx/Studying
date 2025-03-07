@@ -183,3 +183,17 @@ protocol Coordinator: CoordinatorFinishDelegate {
 ### Nontheless, it's better to not do that because of the following reasons:
 - better to keep Coordinator independent from UIKit
 - UIKit won't limit us to it's functionality, so we can use other containers (UIViewController, UITabBar, UIWindow etc.)
+ <br><br>
+
+## A real life example of coordinatorDidFinish method
+A function to take coordinator and check if it's identity matches any elements in the array and remove it:
+```swift
+var childCoordinators: [Coordinator] = []
+
+func coordinatorDidFinish(_ coordinator: Coordinator) {
+ if let index = childCoordinators.firstIndex(where: { $0 === coordinator }) {
+  childCoordinators.remove(at: index)
+ }
+}
+```
+![](https://github.com/cyberbitrixx/Studying/blob/d06ed6d4d7cb2ad6eef529bcca75c48d22dc925b/Coordinator/coordinator-function-diagram.svg)

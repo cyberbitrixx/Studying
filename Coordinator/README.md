@@ -2,6 +2,10 @@
 
 ## UIKit Context
 These notes mainly cover the Coordinator implementation under UIKit framework. There is a way to utilize SwiftUI instead, but UIKit is objectively more efficient and needs less code when implemented with UIKit.
+ <br><br>
+<img width="647" alt="meme" src="https://github.com/user-attachments/assets/a829f2c1-f81d-4c38-91bd-dc57576d11c3" />
+
+
 ## What is Coordinator?
 **Coordinator** is a design pattern in iOS apps, that **manages navigation flow** of the app.
 

@@ -52,3 +52,7 @@ S["Light"] = 1:10800
 ```
 * This creates a range from 1 to 10800 and assigns it to the "Light" key.
 * Julia's ranges are more memory-efficient as they're not immediately expanded into full arrays.
+<br><br>
+<br><br>
+
+By Sophie Shchukina, July 2024.

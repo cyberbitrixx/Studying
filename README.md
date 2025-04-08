@@ -8,7 +8,7 @@ I tried to not cluster the code with comments I added along the way, but their m
 ## Navigation
 
 * [Data In iOS](https://github.com/cyberbitrixx/Studying/tree/c4ac6c9502aecc614b72ce45f755cf7b080cb0c9/Data%20In%20iOS) - a codebase I developed along my studying journey on Working With Data in iOS Meta course (and not only that)  and covers concepts of workin with RESTful API's, JOSN, Core Data, including decoding, sorting, filtering and presenting data in iOS apps.
-* [OOP Principles](https://github.com/cyberbitrixx/Studying/tree/c4ac6c9502aecc614b72ce45f755cf7b080cb0c9/OOP%20Principles) - covers Object-Oriented Programming principles on real code examples and mainly consists of playgrounds I was using as my notes and space for pracrice when mastering OOP paradigm.
+* [OOP Principles](https://github.com/cyberbitrixx/Studying/tree/995fe979a102adaf028b021092f5fa7142df9093/OOP%20Principles) - covers Object-Oriented Programming principles on real code examples and mainly consists of playgrounds I was using as my notes and space for pracrice when mastering OOP paradigm.
 * [MATLAB vs Julia](https://github.com/cyberbitrixx/Studying/tree/d3cf6d50601ec156b8e7478552ab323d977338fd/MATLAB%20vs%20Julia) - a directory that contains basic MD and code related to studying MATLAB and Julia programming language. Acquired during my data science and database development internship at Washington State University.
 * [Coordinator](https://github.com/cyberbitrixx/Studying/tree/4446fe80ca32d12883ce6b6d78a35dcc9cba17d2/Coordinator) - my notes on when I studied Coordinator design pattern in iOS apps.
 <br><br>

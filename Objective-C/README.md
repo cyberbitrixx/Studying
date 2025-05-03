@@ -2,6 +2,14 @@
 * is OOP - conforms to all 4 OOP principles
 * Inheritant from C language and uses same data types
 
+## XCode Files with Objective-C explained
+Any Class file in Objective-C project will have two file types with two different extensions:
+* AppDelegate.h
+* AppDelegate.m
+
+With View files, a .xib extension is usually used:
+* ViewController.xib
+
 ## Methods
 ### Declaration
 ```objc

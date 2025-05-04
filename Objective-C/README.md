@@ -4,11 +4,24 @@
 
 ## XCode Files with Objective-C explained
 Any Class file in Objective-C project will have two file types with two different extensions:
-* AppDelegate.h
-* AppDelegate.m
+* AppDelegate.h (Header file)
+* AppDelegate.m (iMplementations file)
 
 With View files, a .xib extension is usually used:
 * ViewController.xib
+
+![](https://github.com/cyberbitrixx/Studying/blob/d50cc6c96570d40ad74c3423586b1115a852cf6b/Objective-C/image.png)
+<br></br>
+
+| Swift | Objective-C |
+|-|-|
+| Class declaration | .h file |
+| Class implementation | .m file |
+| Access control (public) | Included in .h file |
+| Private/internal stuff | Only in .m file |
+
+
+
 
 ## Methods
 ### Declaration

@@ -37,6 +37,21 @@ This value when truncated to 16 bits and interpreted as a signed short wraps aro
 
 **Note:** there are specifics to formats when trying to print out a value using NSLog, and if used incorrect format (like %d) to print out this value, it will actually have a different, much larger number. That's because depending on what format specifier we use in NSLog statement, compiler will decide how to treat the value data format. There are different format specifiers and they will make the compiler treat different data types differently, but it's a topic I'm not covering in depth this time.
 
+### Format Specifier Cheat Sheet (Objective-C / C):
+
+| Type                | Format | Notes                       |
+| ------------------- | ------ | --------------------------- |
+| `int`               | `%d`   | Signed int                  |
+| `unsigned int`      | `%u`   | Unsigned int                |
+| `short`             | `%hd`  | Signed short                |
+| `unsigned short`    | `%hu`  | Unsigned short              |
+| `long`              | `%ld`  | Signed long                 |
+| `unsigned long`     | `%lu`  | Unsigned long               |
+| `long long`         | `%lld` | Signed long long            |
+| `BOOL`              | `%d`   | Treated as int (0 or 1)     |
+| `char *` (C-String) | `%s`   | Use for C strings           |
+| `NSString *`        | `%@`   | Use for Objective-C strings |
+
 
 ## Methods
 ### Declaration

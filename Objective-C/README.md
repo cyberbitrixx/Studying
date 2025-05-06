@@ -20,7 +20,22 @@ With View files, a .xib extension is usually used:
 | Access control (public) | Included in .h file |
 | Private/internal stuff | Only in .m file |
 
+## Data types
+### BOOL vs bool
 
+### short Data Type
+For smaller integer values "short" data type can be used instead. It has a limit of 16 bits size (in bits), and value size limits are -32,768 to 32767.
+**If value size exceeds the limits:**
+1) value is being transformed into binary format;
+2) truncated to 16 bits and interpreted as a signed short.
+
+**For example:**
+```objc
+short shortValue = 6000;
+```
+This value when truncated to 16 bits and interpreted as a signed short wraps around and becomes -5536.
+
+**Note:** there are specifics to formats when trying to print out a value using NSLog, and if used incorrect format (like %d) to print out this value, it will actually have a different, much larger number. That's because depending on what format specifier we use in NSLog statement, compiler will decide how to treat the value data format. There are different format specifiers and they will make the compiler treat different data types differently, but it's a topic I'm not covering in depth this time.
 
 
 ## Methods

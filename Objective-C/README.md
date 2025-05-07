@@ -1,6 +1,7 @@
 # Objective-C Fundamentals
 * is OOP - conforms to all 4 OOP principles
 * Inheritant from C language and uses same data types
+<br></br>
 
 ## XCode Files with Objective-C explained
 Any Class file in Objective-C project will have two file types with two different extensions:
@@ -20,10 +21,13 @@ With View files, a .xib extension is usually used:
 | Access control (public) | Included in .h file |
 | Private/internal stuff | Only in .m file |
 
-## Data types
-### BOOL vs bool
+<br></br>
 
-### short Data Type
+# Data types
+## BOOL vs bool
+*will add notes later*
+
+## short Data Type
 For smaller integer values "short" data type can be used instead. It has a limit of 16 bits size (in bits), and value size limits are -32,768 to 32767.
 **If value size exceeds the limits:**
 1) value is being transformed into binary format;
@@ -51,6 +55,43 @@ This value when truncated to 16 bits and interpreted as a signed short wraps aro
 | `BOOL`              | `%d`   | Treated as int (0 or 1)     |
 | `char *` (C-String) | `%s`   | Use for C strings           |
 | `NSString *`        | `%@`   | Use for Objective-C strings |
+| `float, double, CGFloat`        | `%f`   | Use for any decimal numbers data types |
+| `float, double, CGFloat`        | `%.2f`, `%.10f`, etc.   | Use for a specified amount of digits displayed in a decimal number |
+
+<br></br>
+
+### Decimal types cheat sheet
+**1.✔️ Precision depends on the data type's limits**
+* float, double, and CGFloat all store decimal values, and they differ mainly in how many digits of precision they 	can handle and how much memory they use. This affects calculations and rounding.
+
+2.✔️ Float < Double, CGFloat = platform alias
+Perfect understanding. CGFloat is not a new type — it’s a type alias:
+
+* On 32-bit systems, it's a float.
+
+* On 64-bit systems (like iPhones today), it’s a double.
+So on modern iOS development, you can usually treat CGFloat like double, especially when working with UI/layout (CoreGraphics, UIKit, etc.).
+
+3.✔️ Displayed precision depends on NSLog formatting too
+* Yes. %f is always for decimal values (float, double, or CGFloat). You can control how many digits to show with %.2f, %.10f, etc. The data stored and the data displayed aren’t always the same!
+
+4.✔️ Use double unless otherwise needed
+This is a great rule of thumb. Use double when:
+
+* You want higher precision
+
+* You’re doing calculations (esp. chained or scientific)
+
+* You don’t specifically need to save memory
+
+* Use CGFloat in iOS whenever an API or layout method expects it — it’s the standard for most UI geometry.
+
+5.✔️ Manual casting is fine, deep internals can wait
+* Yes! Manual casting like (CGFloat)myDouble is absolutely fine for now.
+Understanding how bits are stored or how floating-point math works behind the scenes is useful later, but not essential right now. You’re making a good judgment: prioritize readability, fluency, and building things. The deep internals can come gradually.
+<br></br>
+
+
 
 
 ## Methods

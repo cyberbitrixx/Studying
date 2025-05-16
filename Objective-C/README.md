@@ -91,7 +91,63 @@ This is a great rule of thumb. Use double when:
 Understanding how bits are stored or how floating-point math works behind the scenes is useful later, but not essential right now. You’re making a good judgment: prioritize readability, fluency, and building things. The deep internals can come gradually.
 <br></br>
 
+# Swift to Objective-C Type Mapping
 
+| Swift Type       | Objective-C Type           | Use Case                               |
+|------------------|----------------------------|----------------------------------------|
+| `Int`            | `NSInteger`                | General-purpose integers, ages, counts |
+| `UInt`           | `NSUInteger`               | Positive whole numbers                 |
+| `Bool`           | `BOOL`                     | YES/NO, true/false values             |
+| `Double`/`Float` | `CGFloat`                  | Sizes, coordinates, measurements       |
+| `String`         | `NSString *`               | Text                                   |
+| `[Type]`         | `NSArray *`                | Collections                            |
+| `[Key: Value]`   | `NSDictionary *`           | Key-value collections                  |
+| `Date`           | `NSDate *`                 | Date/time values                       |
+| `URL`            | `NSURL *`                  | Web and file URLs                      |
+| `Set<Type>`      | `NSSet *`                  | Unique collections                     |
+| `Data`           | `NSData *`                 | Binary data                           |
+| Optional types   | Nullable pointers          | Values that might be nil/null          |
+| Enums            | `NS_ENUM`/`NS_OPTIONS`     | Fixed sets of related values           |
+| Structs          | Classes or C structs       | Value types (differs conceptually)     |
+| Closures         | Blocks                     | Passing functionality as variables     |
+| Protocols        | Protocols                  | Defining contract interfaces           |
+
+## Property Attributes in Objective-C (No Swift Equivalent)
+
+| Attribute    | Usage                                         |
+|--------------|-----------------------------------------------|
+| `nonatomic`  | Non-thread-safe access (faster performance)   |
+| `atomic`     | Thread-safe access (default, slower)          |
+| `strong`     | Ownership reference (similar to Swift default)|
+| `weak`       | Non-ownership reference (similar to Swift weak)|
+| `copy`       | Creates a copy on assignment (for NSString, etc.) |
+| `assign`     | For primitive types (no memory management)    |
+| `readonly`   | Cannot be set outside implementation          |
+| `readwrite`  | Can be both read and written (default)        |
+
+## Common Pattern Translations
+
+### Property Declaration
+**Swift:**
+```swift
+var name: String = "John"
+```
+
+**Objective-C:**
+```objc
+@property (nonatomic, copy) NSString *name;
+```
+
+### Collection with Type Annotation
+**Swift:**
+```swift
+var users: [User] = []
+```
+
+**Objective-C:**
+```objc
+@property (nonatomic, strong) NSArray<User *> *users;
+```
 
 
 ## Methods

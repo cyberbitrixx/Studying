@@ -43,6 +43,8 @@ Concurrent thread is a thread where different tasks can be performed or started 
 
 ## Switching between the Queues
 **Example (moving to the Main queue):** we were fetching and decoding some JSON data and populating a table view with it. Such tasks happen on the background thread, so after it we need to switch to the main thread to refresh the table view (since it's UI) and show the data.
+
+### Swift
 *A very common piece of code:
 ```swift
 DispatchQueue.main.async {
@@ -55,4 +57,16 @@ DispatchQueue.main.async {
 DispatchQueue.global(qos: .background).async {
   // Code to run on background queue
 }
+```
+
+### Objective-C:
+```obj-c
+dispatch_async(dispatch_get_gloabl_queue(DISPATCH_PRIORITY_DEFAULT, 0), ^{
+  // Baclground tasks (fetch/persist JSON, persist in CoreData etc.)
+
+  // Now go back to main thread to update UI
+  dispatch_async(dispatch_get_main_queue(), ^{
+   [self.tableView.reloadData];
+  });
+})
 ```

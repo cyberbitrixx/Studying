@@ -1,5 +1,6 @@
 # 🪢 Concurrency and Threading in iOS Apps
-Concurrency is doing mulriple tasks at the same time, which we can do thanks to multi-core proccessors.
+Concurrency is doing multiple tasks at the same time, which we can do thanks to multi-core proccessors.
+It's basically a sequence of instructions the CPU follows.
 **The more cores proccessor has, the more tasks we can perform at the same time.**
 
 ## Threads
